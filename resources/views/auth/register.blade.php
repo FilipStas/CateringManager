@@ -1,5 +1,5 @@
 <x-layout>
-    <form class="auth"  method="POST" action="{{route('register')}}" >
+    <form  id="registerForm" class="auth"  method="POST" action="{{route('register')}}" >
         @csrf
 
         <label for="email" >Email</label>
@@ -14,7 +14,7 @@
         <input
             type="text"
             name="name"
-            placeholder="Your password"
+            placeholder="Tvoje Meno"
             value="{{old('name')}}"
             required
         >
@@ -23,7 +23,7 @@
         <input
             type="password"
             name="password"
-            placeholder="Your password"
+            placeholder="Tvoje heslo"
             required
         >
 
@@ -31,7 +31,7 @@
         <input
             type="password"
             name="password_confirmation"
-            placeholder="Your password"
+            placeholder="Tvoje heslo znovu"
             required
         >
 

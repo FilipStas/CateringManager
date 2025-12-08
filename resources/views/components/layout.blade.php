@@ -20,6 +20,8 @@
         <span>
             Ahoj, {{ auth()->user()->name }}
         </span>
+
+                <a href="{{route('users.index')}}" class="nav-btn" > Zamestnanci</a>
         <a href="{{ route('home') }}" class="nav-btn">Welcome</a>
         <a href="{{ route('polozky') }}" class="nav-btn">Zobraz jedlá</a>
         <a href="{{ route('pridajPolozku') }}" class="nav-btn">Pridaj jedlo</a>

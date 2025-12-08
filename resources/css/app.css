@@ -7,15 +7,18 @@
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* ===== HEADER ===== */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background: #2d3748;
+    background: #2f855a; /* tmavá zelená */
     color: white;
+    border-bottom: 3px solid #38a169; /* svetlejšia zelená linka */
 }
 
 .logo {
@@ -32,7 +35,7 @@
 /* ===== BUTTONS ===== */
 .nav-btn {
     padding: 8px 14px;
-    background: #4a5568;
+    background: #38a169; /* stredná zelená */
     color: white;
     text-decoration: none;
     border-radius: 6px;
@@ -40,7 +43,8 @@
 }
 
 .nav-btn:hover {
-    background: #718096;
+    background: #48bb78; /* svetlejšia zelená pri hover */
+    transform: translateY(-2px);
 }
 
 /* ===== CONTENT ===== */
@@ -73,4 +77,9 @@
     .nav-btn {
         width: 100%;
     }
+}
+
+body {
+    background-color: #f0fff4; /* jemná svetlá zelená namiesto whitesmoke */
+    font-family: var(--font-sans);
 }
