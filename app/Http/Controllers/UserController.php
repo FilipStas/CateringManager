@@ -14,6 +14,20 @@ class UserController extends Controller
         $users = User::all();
         return view('users.index', compact('users'));
     }
+    public function create(Request $request){
+        $validated = $request->validate([
+            'name' => 'required|string|max:55',
+            'email' => 'required|string|email|max:55|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        $user =  User::create($validated);
+
+        return redirect()->route('users.index');
+    }
+    public function showCreate(User $user){
+
+        return view('users.register');
+    }
 
     public function show($id){
         $user = User::findOrFail($id);
@@ -24,7 +38,6 @@ class UserController extends Controller
     {
         return view('users.edit', compact('user'));
     }
-
 
     public function update(Request $request, User $user)
     {

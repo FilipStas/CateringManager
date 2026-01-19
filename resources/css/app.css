@@ -1,68 +1,50 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: #2f855a;
-    color: white;
-    border-bottom: 3px solid #38a169;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-.navigation {
-    display: flex;
-    gap: 12px;
-}
-
 .nav-btn {
-    padding: 8px 14px;
-    background: #38a169;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #306E02;
     color: white;
     text-decoration: none;
     border-radius: 6px;
-    transition: 0.2s;
+    border: 1px solid black;
+    transition: background 0.2s, transform 0.2s;
+    cursor: pointer;
 }
-
 .nav-btn:hover {
-    background: #48bb78;
-    transform: translateY(-2px);
+    background-color: #76A85B;
+    transform: scale(1.05);
 }
 
-
-
-@media (max-width: 700px) {
-    .header {
+@media (max-width: 768px) {
+    .navigation {
         flex-direction: column;
         align-items: center;
-        text-align: center;
-        gap: 10px;
-    }
-
-    .navigation {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-btn {
-        padding: 10px 20px;
-        width: 45%;
-        text-align: center;
-    }
-}
-
-@media (max-width: 400px) {
-    .nav-btn {
         width: 100%;
+        gap: 10px;
+        margin-left: 0;
+    }
+    .nav-btn {
+        width: 90%;
+        text-align: center;
     }
 }
 
-body {
-    background-color: #f0fff4;
-    font-family: var(--font-sans);
-    margin: 0;
+/* Users */
+.sidebar{
+    padding: 15px;
+    background-color: #f0f0f0;
+    min-height: 100vh;
+}
+.userbox {
+    background-color: #f0f0f0;  /* svetlošedé pozadie */
+    color: #333;                 /* farba textu */
+    border-radius: 20px;         /* zaoblené rohy */
+    padding: 5px 12px;           /* vnútorný padding */
+    font-weight: 500;            /* stredne tučný text */
+    transition: background 0.3s, color 0.3s; /* jemná animácia pri hover */
+}
+.userbox:hover {
+    background-color: #306E02;   /* tmavozelené pozadie pri hover */
+    color: white;                /* biela farba textu pri hover */
 }
 
 

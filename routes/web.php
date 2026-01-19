@@ -2,16 +2,13 @@
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AdminMiddleware;
-
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['guest'])->controller(AuthController::class)->group(function () {
-    Route::get('/register', 'showRegister')->name('show.register');
     Route::get('/login', 'showLogin')->name('show.login');
-    Route::post('/register', 'register')->name('register');
     Route::post('/login', 'login')->name('login');
 });
 
@@ -38,11 +35,12 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 
-    Route::get('/PridajJedlo', function () {
+    Route::get('/pridajJedlo', function () {
         return view('polozky.polozkaCreate');
     })->name('pridajPolozku');
-
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/add/user', [UserController::class, 'showCreate'])->name('users.showRegistration');
+    Route::post('/users', [UserController::class, 'create'])->name('users.create');
 });
 
 

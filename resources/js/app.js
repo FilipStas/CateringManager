@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', function (event) {
         const errors = [];
-
         const email = form.elements['email']?.value.trim() ?? '';
         const name = form.elements['name']?.value.trim() ?? '';
         const password = form.elements['password']?.value.trim() ?? '';
