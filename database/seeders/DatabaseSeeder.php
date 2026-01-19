@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test@testik.com',
         ]);
-
-        $this->call(PolozkaSeeder::class);// Call the PolozkaSeeder to seed Polozka data
+        $this->call(AdminUserSeeder::class);
+     //   $this->call(PolozkaSeeder::class);// Call the PolozkaSeeder to seed Polozka data
     }
 }

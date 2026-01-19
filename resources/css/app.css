@@ -1,41 +1,25 @@
-@import 'tailwindcss';
-
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
-}
-
-/* ===== HEADER ===== */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background: #2f855a; /* tmavá zelená */
+    background: #2f855a;
     color: white;
-    border-bottom: 3px solid #38a169; /* svetlejšia zelená linka */
+    border-bottom: 3px solid #38a169;
 }
 
 .logo {
     font-size: 24px;
     font-weight: bold;
 }
-
-/* ===== NAVIGATION ===== */
 .navigation {
     display: flex;
     gap: 12px;
 }
 
-/* ===== BUTTONS ===== */
 .nav-btn {
     padding: 8px 14px;
-    background: #38a169; /* stredná zelená */
+    background: #38a169;
     color: white;
     text-decoration: none;
     border-radius: 6px;
@@ -43,16 +27,12 @@
 }
 
 .nav-btn:hover {
-    background: #48bb78; /* svetlejšia zelená pri hover */
+    background: #48bb78;
     transform: translateY(-2px);
 }
 
-/* ===== CONTENT ===== */
-.content {
-    padding: 20px;
-}
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 700px) {
     .header {
         flex-direction: column;
@@ -80,6 +60,9 @@
 }
 
 body {
-    background-color: #f0fff4; /* jemná svetlá zelená namiesto whitesmoke */
+    background-color: #f0fff4;
     font-family: var(--font-sans);
+    margin: 0;
 }
+
+

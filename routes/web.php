@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AuthController;
+use App\Http\Middleware\AdminMiddleware;
 
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -15,14 +16,6 @@ Route::middleware(['guest'])->controller(AuthController::class)->group(function 
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/users', [UserController::class, 'index']  )->name('users.index');
-    Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-
-
-
     Route::get('/', function () {
         return view('welcome');
     })->name('home');
@@ -35,13 +28,21 @@ Route::middleware('auth')->group(function () {
         ];
         return view('polozky.polozky', ['polozky' => $polozky]);
     })->name('polozky');
+});
+
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    // Admin-only routy
+    Route::get('/users', [UserController::class, 'index']  )->name('users.index');
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 
     Route::get('/PridajJedlo', function () {
         return view('polozky.polozkaCreate');
     })->name('pridajPolozku');
 
-
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 });
-
 
 

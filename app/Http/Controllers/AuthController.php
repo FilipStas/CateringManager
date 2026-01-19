@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
+
 class AuthController extends Controller
 {
     public function  showRegister(){
@@ -18,8 +19,8 @@ class AuthController extends Controller
 
     public function  register(Request $request){
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:55',
+            'email' => 'required|string|email|max:55|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
         $user =  User::create($validated);
