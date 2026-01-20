@@ -20,7 +20,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->route('foods.index');
     }
 
     /**
@@ -42,14 +42,14 @@ class FoodController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return redirect()->route('foods.index');
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        return redirect()->route('foods.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class FoodController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return redirect()->route('foods.index');
     }
 
     /**
