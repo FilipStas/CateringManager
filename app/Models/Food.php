@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
-    protected $table = 'food';   // 👈 dôležité
+    protected $table = 'foods';
     protected $fillable = ['name'];
-    public $timestamps = false;
+
+    public function packages()
+    {
+        return $this->belongsToMany(Package::class, 'food_package', 'food_id', 'package_id')
+            ->withPivot('quantity');
+    }
 }
+

@@ -47,9 +47,9 @@
         </div>
 
         <div class="d-flex gap-3">
-            <button type="submit" class="nav-btn" >Zaregistrovat </button>
+            <button type="submit" class="nav-btn" >Zaregistrovať</button>
             <a href="{{route('users.index')}}" class="nav-btn">
-                Naspat
+                Naspät
             </a>
         </div>
 

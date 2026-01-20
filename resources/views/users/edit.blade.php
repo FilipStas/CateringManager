@@ -28,7 +28,7 @@
                 <div class="d-flex gap-3">
                     <button type="submit" class="nav-btn">Uložiť zmeny</button>
                     <a href="{{route('users.index', $user)}}" class="nav-btn">
-                        Naspat
+                        Naspäť
                     </a>
                 </div>
             </form>
