@@ -65,6 +65,9 @@ class FoodController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $food = Food::findOrFail($id);
+        $food->delete();
+
+        return redirect()->route('foods.index');
     }
 }

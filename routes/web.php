@@ -18,6 +18,7 @@ Route::middleware('auth')->group(function () {
     // Food routes
     Route::get('/foods', [FoodController::class, 'index'])->name('foods.index');
     Route::post('/foods', [FoodController::class, 'store'])->name('foods.store');
+    Route::delete('/foods/{food}', [FoodController::class, 'destroy'])->name('foods.destroy');
 });
 
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
