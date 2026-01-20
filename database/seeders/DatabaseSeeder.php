@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@testik.com',
         ]);
         $this->call(AdminUserSeeder::class);
-     //   $this->call(PolozkaSeeder::class);// Call the PolozkaSeeder to seed Polozka data
+     // $this->call(PolozkaSeeder::class);// Call the PolozkaSeeder to seed Polozka data
     }
 }
