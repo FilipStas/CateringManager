@@ -7,13 +7,22 @@ Aplikácia má **dva typy používateľov**:
 - **User** – iba čítanie (read-only)
 
 ---
+---
+
+## 🧪 Spustenie projektu
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
 
 ## 🧑‍🤝‍🧑 Používateľské roly
 
 ### 👤 User (bežný používateľ)
 User má **iba prístup na čítanie**:
 - môže si prezerať zoznam objednávok
-- môže si pozrieť detaily objednávok a ich položky
 
 User **NEMÔŽE**:
 - vytvárať objednávky
@@ -94,13 +103,4 @@ Model `Food` slúži **len ako pomôcka pre admina** (rýchly výber názvu polo
 - Aj pri manuálnom pokuse (Postman, URL) dostane `403` alebo `404`
 - UI aj backend sú striktne oddelené podľa rolí
 
----
 
-## 🧪 Spustenie projektu
-
-```bash
-composer install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
-php artisan serve
