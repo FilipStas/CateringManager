@@ -14,6 +14,7 @@ class UserController extends Controller
         $users = User::all();
         return view('users.index', compact('users'));
     }
+
     public function create(Request $request){
         $validated = $request->validate([
             'name' => 'required|string|max:55',
@@ -24,6 +25,7 @@ class UserController extends Controller
 
         return redirect()->route('users.index');
     }
+
     public function showCreate(User $user){
 
         return view('users.register');
@@ -66,7 +68,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-
         return redirect()->route('users.index');
     }
 }

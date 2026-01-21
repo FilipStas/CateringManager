@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\QuantityUnit;
 use Illuminate\Http\Request;
 use App\Models\Food;
+use App\Enums\FoodType;
+use Illuminate\Validation\Rules\Enum;
+
 class FoodController extends Controller
 {
     /**
@@ -12,7 +16,9 @@ class FoodController extends Controller
     public function index()
     {
         $foods = Food::all();
-        return view('food.index', compact('foods'));
+        $foodTypes = FoodType::cases();
+        $units = QuantityUnit::cases();
+        return view('food.index', compact(['foods', 'foodTypes', 'units']));
     }
 
     /**
@@ -30,6 +36,8 @@ class FoodController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'food_type' => ['required', new Enum(FoodType::class)],
+            'unit' => ['required', new Enum(QuantityUnit::class)],
         ]);
 
         Food::create($validated);
@@ -63,7 +71,7 @@ class FoodController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request,string $id)
     {
         $food = Food::findOrFail($id);
         $food->delete();

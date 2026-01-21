@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('foods', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('food_type');
+            $table->string('unit');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

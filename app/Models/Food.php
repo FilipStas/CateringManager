@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
+use App\Enums\FoodType;
+use App\Enums\QuantityUnit;
 use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
     protected $table = 'foods';
-    protected $fillable = ['name'];
+    protected $fillable = ['name',
+        'food_type',
+        'unit',
+    ];
+    protected $casts = [
+        'unit' => QuantityUnit::class,
+        'food_type' =>FoodType::class,
+    ];
 
-    public function packages()
-    {
-        return $this->belongsToMany(Package::class, 'food_package', 'food_id', 'package_id')
-            ->withPivot('quantity');
-    }
 }
 
