@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('contact_name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->string('location');
+            $table->string('location')->nullable();;
             $table->dateTime('event_time');
             $table->dateTime('event_date');
             $table->boolean('pickup')->default(false);

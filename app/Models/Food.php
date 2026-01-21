@@ -17,6 +17,13 @@ class Food extends Model
         'unit' => QuantityUnit::class,
         'food_type' =>FoodType::class,
     ];
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+
+
 
 }
 

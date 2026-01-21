@@ -18,4 +18,10 @@ class Order extends Model
         'pickup'
     ];
 
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+
 }
