@@ -15,7 +15,7 @@ enum FoodType: string
             self::Soup => 'Polievka',
             self::MainDish => 'Hlavné jedlo',
             self::Dessert => 'Dezert',
-            self::BuffetTable => 'Bufet',
+            self::BuffetTable => 'švedske stoly',
             self::Sauce => 'Omáčka',
         };
     }

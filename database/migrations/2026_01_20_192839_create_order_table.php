@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('location')->nullable();;
-            $table->dateTime('event_time');
-            $table->dateTime('event_date');
+            $table->integer('people_count')->default(0);
+            $table->time('event_time');
+            $table->date('event_date');
             $table->boolean('pickup')->default(false);
             $table->timestamps();
         });

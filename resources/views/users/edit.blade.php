@@ -1,6 +1,6 @@
 <x-layout>
     <div class=" d-flex justify-content-center align-items-center py-5 ">
-        <div class="card shadow-lg  p-4" style="min-width: 350px; max-width: 450px; width: 100%;">
+        <div class="card shadow-lg  p-4" >
             <h2 class="text-center mb-4">Upraviť používateľa {{$user->id}}</h2>
 
             <form action="{{ route('users.update', $user) }}" method="POST" class="needs-validation" novalidate>

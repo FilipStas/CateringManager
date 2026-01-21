@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +13,15 @@ class AuthController extends Controller
 {
     public function  showLogin(){
         return view('auth.login');
+    }
+    public function ordersReadOnly()
+    {
+        $orders = Order::with('items')->latest()->get();
+
+        return view('order.read', [
+            'orders' => $orders,
+            'readonly' => true,
+        ]);
     }
     public function  login(Request $request){
         $validated = $request->validate([

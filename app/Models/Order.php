@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static findOrFail(string $id)
+ * @method static create(array $array)
+ */
 class Order extends Model
 {
     protected $table = 'orders';
@@ -15,7 +19,8 @@ class Order extends Model
         'location',
         'event_time',
         'event_date',
-        'pickup'
+        'pickup',
+        'people_count',
     ];
 
     public function items()

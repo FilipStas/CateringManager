@@ -1,0 +1,149 @@
+<x-layout>
+    <div class="container align-items-center mt-3 w-50">
+        <h4 class="mb-3">Editovať objednávku</h4>
+
+        <form method="POST" action="{{ route('orders.update', $order->id) }}">
+            @csrf
+            @method('PUT')
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Názov objednávky</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    value="{{ old('name', $order->name) }}"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="contact_name" class="form-label">Kontaktná osoba</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="contact_name"
+                    name="contact_name"
+                    value="{{ old('contact_name', $order->contact_name) }}"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email (voliteľný)</label>
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    value="{{ old('email', $order->email) }}"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Telefón</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="phone"
+                    name="phone"
+                    value="{{ old('phone', $order->phone) }}"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Miesto konania (voliteľné)</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    name="location"
+                    value="{{ old('location', $order->location) }}"
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="people_count" class="form-label">Počet hostí</label>
+                <input
+                    type="number"
+                    class="form-control"
+                    id="people_count"
+                    name="people_count"
+                    min="1"
+                    value="{{ old('people_count', $order->people_count) }}"
+                    required
+                >
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="event_date" class="form-label">Dátum</label>
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="event_date"
+                        name="event_date"
+                        value="{{ old('event_date', $order->event_date) }}"
+                        required
+                    >
+                </div>
+                <div class="col">
+                    <label for="event_time" class="form-label">Čas</label>
+                    <input
+                        type="time"
+                        class="form-control"
+                        id="event_time"
+                        name="event_time"
+                        value="{{ old('event_time', $order->event_time) }}"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="form-check mb-3">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="pickup"
+                    name="pickup"
+                    value="1"
+                    {{ old('pickup', $order->pickup) ? 'checked' : '' }}
+                >
+                <label class="form-check-label" for="pickup">Vyzdvihnutie</label>
+            </div>
+
+            <div class="d-flex gap-3">
+                <button type="submit" class="nav-btn">Uložiť zmeny</button>
+
+                <a href="{{ route('orders.index') }}" class="nav-btn">Naspäť</a>
+
+                @if(Route::has('orders.items.edit'))
+                    <a href="{{ route('orders.items.edit', $order->id) }}" class="nav-btn">
+                        Položky objednávky
+                    </a>
+                @endif
+            </div>
+        </form>
+        <form method="POST"
+              action="{{ route('orders.destroy', $order->id) }}">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit" class="btn btn-danger">
+                Odstrániť objednávku
+            </button>
+        </form>
+
+        @if($errors->any())
+            <div class="alert alert-danger mt-3">
+                <ul class="mb-0">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
+</x-layout>

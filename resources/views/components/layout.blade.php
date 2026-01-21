@@ -14,9 +14,9 @@
 <body>
 
 <header>
-    <nav class="navbar  navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar  navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">CateringManager</a>
+            <a class="navbar-brand" href="{{ route('orders.index') }}">CateringManager</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
                     aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,13 @@
                             <span class="nav-link">{{ auth()->user()->name }}</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('orders.index') }}">Objednávky</a>
+                            <a class="nav-link" href="{{ route('orders.read') }}">Objednávky</a>
                         </li>
+
                         @if(auth()->user()->isAdmin())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('orders.index') }}">Objednávky</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users.index') }}">Zamestnanci</a>
                             </li>

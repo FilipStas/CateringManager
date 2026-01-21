@@ -2,19 +2,25 @@
 
 namespace App\Models;
 
+use App\Enums\QuantityUnit;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed $order_id
+ */
 class OrderItem extends Model
 {
-    protected $fillable = ['order_id', 'food_id', 'quantity', 'price_at_order_time'];
+    protected $fillable =
+        ['order_id',
+            'quantity',
+            'name',
+        ];
+    protected $casts = [
+        'unit' => QuantityUnit::class,
+    ];
 
     public function order()
     {
         return $this->belongsTo(Order::class);
-    }
-
-    public function food()
-    {
-        return $this->belongsTo(Food::class);
     }
 }
