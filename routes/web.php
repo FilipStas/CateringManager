@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/foods', [FoodController::class, 'index'])->name('foods.index');
     Route::post('/foods', [FoodController::class, 'store'])->name('foods.store');
     Route::delete('/foods/{food}', [FoodController::class, 'destroy'])->name('foods.destroy');
+    Route::get('/foods/filter', [FoodController::class, 'filter'])->name('foods.filter');
 
     //Order routes
     Route::get('/orders',[OrderController::class,'index'])->name('orders.index');

@@ -1,7 +1,7 @@
 <x-layout>
     <div class="m-0 p-4">
         <div class="row">
-            <div class="col">
+            <div class="col-8">
                 <form method="POST" action="{{ route('orders.store') }}">
                     @csrf
                     <div class="mb-3">
@@ -58,8 +58,30 @@
                         </ul>
                     </div>
                 @endif
-
             </div>
+            <div class="col-4">
+                <label for="food_type" class="form-label">Filtruj</label>
+                <select name="food_type" id="food_type" class="form-control">
+                    <option value="">-- Všetky --</option>
+                    @foreach($foodTypes as $type)
+                        <option value="{{ $type->value }}">
+                            {{ $type->label() }}
+                        </option>
+                    @endforeach
+                </select>
+                <div class="row">
+
+                    <div id="food-list">
+                        @foreach($foods as $food)
+                            <div class="food-item">{{ $food->name }}</div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
+
     </div>
 </x-layout>

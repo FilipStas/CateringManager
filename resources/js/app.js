@@ -1,5 +1,39 @@
 import './bootstrap';
 
+//FOOD FILTER
+document.addEventListener('DOMContentLoaded', () => {
+    const foodSelect = document.getElementById('food_type');
+    const foodList = document.getElementById('food-list');
+
+    if (!foodSelect || !foodList) return;
+
+    foodSelect.addEventListener('change', () => {
+        const selectedType = foodSelect.value;
+
+        fetch(`/foods/filter?food_type=${selectedType}`)
+            .then(response => response.json())
+            .then(data => {
+                foodList.innerHTML = '';
+
+                if (data.length === 0) {
+                    foodList.innerHTML = '<div class="food-item">Žiadne jedlá</div>';
+                    return;
+                }
+
+                data.forEach(food => {
+                    const div = document.createElement('div');
+                    div.classList.add('food-item');
+                    div.textContent = food.name;
+                    foodList.appendChild(div);
+                });
+            })
+            .catch(error => {
+                console.error('Chyba pri načítaní jedál:', error);
+                foodList.innerHTML = '<div class="food-item text-danger">Nepodarilo sa načítať jedlá</div>';
+            });
+    });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registerForm');
     if (!form) return;

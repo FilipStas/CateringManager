@@ -20,6 +20,18 @@ class FoodController extends Controller
         $units = QuantityUnit::cases();
         return view('food.index', compact(['foods', 'foodTypes', 'units']));
     }
+    public function filter(Request $request)
+    {
+        $type = $request->query('food_type');
+
+        if($type === null){
+            $response = Food::all();
+            return response()->json($response);
+
+        }
+        $response = Food::where('food_type', $type)->get();
+        return response()->json($response);
+    }
 
     /**
      * Show the form for creating a new resource.
