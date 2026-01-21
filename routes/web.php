@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\OrderController;
 
 Route::middleware('guest')->controller(AuthController::class)->group(function () {
     Route::get('/login', 'showLogin')->name('show.login');
@@ -19,6 +20,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/foods', [FoodController::class, 'index'])->name('foods.index');
     Route::post('/foods', [FoodController::class, 'store'])->name('foods.store');
     Route::delete('/foods/{food}', [FoodController::class, 'destroy'])->name('foods.destroy');
+
+    //Order routes
+    Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
+    Route::get('/orders/create',[OrderController::class,'create'])->name('orders.create');
+    Route::post('/orders',[OrderController::class,'store'])->name('orders.store');
+
+
 });
 
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {

@@ -29,6 +29,9 @@
                         <li class="nav-item">
                             <span class="nav-link">{{ auth()->user()->name }}</span>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('orders.index') }}">Objednávky</a>
+                        </li>
                         @if(auth()->user()->isAdmin())
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users.index') }}">Zamestnanci</a>

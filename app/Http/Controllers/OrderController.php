@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\FoodType;
+use App\Models\Food;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -11,7 +14,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::all();
+        return view('order.index', compact('orders'));
     }
 
     /**
@@ -19,7 +23,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $foods = Food::all();
+        $foodTypes = FoodType::cases();
+        return view('order.create', compact('foods', 'foodTypes'));
     }
 
     /**
@@ -27,7 +33,17 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+           'contact_name' => 'required|string|max:255',
+            'email' => 'string|email|max:255',
+            'name' => 'required|string|max:255',
+            'phone' =>'required|string|max:20|regex:/^\+?[0-9]{7,15}$/',
+            'location' => 'string|max:255',
+            'event_time' => 'required|string|max:20',
+            'event_date' => 'required|date',
+        ]);
+        $order = Order::create($validated);
+        return redirect()->route('orders.index');
     }
 
     /**
